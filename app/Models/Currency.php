@@ -22,4 +22,6 @@ class Currency extends Model
     protected $casts = [
         'date' => 'datetime:Y-m-d',
     ];
+
+    protected $visible = ['value', 'date'];
 }
