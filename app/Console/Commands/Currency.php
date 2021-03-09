@@ -76,7 +76,7 @@ class Currency extends Command
                 try {
                     $model = CurrencyModel::updateOrCreate(
                         [
-                            'currencyId' => $currency['@attributes']['ID'],
+                            'currencyID' => $currency['@attributes']['ID'],
                             'date'       => $day->format('Y-m-d')
                         ],
                         [
@@ -111,8 +111,8 @@ class Currency extends Command
             return false;
         }
         foreach ($daily['Valute'] as $currency) {
-            $currencyId = $currency['@attributes']['ID'];
-            $dynamic = $this->_getData(self::DYNAMIC_URL, [$start->format("d/m/Y"), $end->format("d/m/Y"), $currencyId]);
+            $currencyID = $currency['@attributes']['ID'];
+            $dynamic = $this->_getData(self::DYNAMIC_URL, [$start->format("d/m/Y"), $end->format("d/m/Y"), $currencyID]);
             if (empty($dynamic['Record'])) {
                 $this->error("No currency for day {$day->format("d/m/Y")}");
                 continue;
@@ -122,7 +122,7 @@ class Currency extends Command
                     $day = date_create_from_format('d.m.Y', $rate['@attributes']['Date']);
                     $model = CurrencyModel::updateOrCreate(
                         [
-                            'currencyId' => $currencyId,
+                            'currencyID' => $currencyID,
                             'date'       => $day->format('Y-m-d')
                         ],
                         [
