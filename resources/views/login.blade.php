@@ -12,7 +12,7 @@
             @error('info')
                 <x-alert type="info" :message="$message"/>
             @enderror
-            <form method="POST" action="{!! route('auth') !!}">
+            <form method="POST" action="{{ route('auth') }}">
                 @csrf
                 <input
                     type="email"

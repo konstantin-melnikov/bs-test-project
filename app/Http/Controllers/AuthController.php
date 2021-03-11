@@ -26,4 +26,13 @@ class AuthController extends Controller
             ]
         )->withInput($request->except('password'));
     }
+    
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('login');
+    }
 }
